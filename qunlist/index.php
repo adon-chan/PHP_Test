@@ -56,7 +56,7 @@ if (!empty($_POST['submit']) && $_POST['select']=='qun'){
     $num=$_POST['num'];
     @$sql="select * from qunlist where qunnum='$num'";
     @$query=mysqli_query($conn,$sql);
-    @$keys=mysqli_num_fields($query);
+    @$keys=mysqli_num_rows($query);
     if($keys) {
         echo "<table border='1'>
     <tr>
