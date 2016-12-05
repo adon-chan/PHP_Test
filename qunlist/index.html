@@ -1,14 +1,46 @@
 <html>
 <head>
+    <meta charset="utf-8">
+    <script tpye="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="echarts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#button').click(function () {
+                var num=$('#num').val();
+                var opt=$('#select').val();
+//                console.log(num);
+                $.post("index.php",
+                        {
+                            'num':num,
+                            'select':opt,
+                        },
+                        function (data) {
+                            $('#list').html(data);
+                        }
+                );
+            });
+        });
+    </script>
 </head>
 <body>
-<form action="index.php" method="post">
-    输入号码：<input type="text" name="num">
-    <select name="select">
+<!--<form action="index.php" method="post">-->
+    <!--输入号码：<input type="text" name="num">-->
+    <!--<select name="select">-->
+        <!--<option value="qq">QQ号码</option>-->
+        <!--<option value="qun">QQ群</option>-->
+    <!--</select>-->
+    <!--<input type="submit" name="submit" value="搜索">-->
+<!--</form>-->
+<form>
+    输入号码：<input type="text" name="num" id="num">
+    <select name="select" id="select">
         <option value="qq">QQ号码</option>
         <option value="qun">QQ群</option>
     </select>
-    <input type="submit" name="submit" value="搜索">
+    <input type="button" id="button" value="搜索">
 </form>
+
+<div id="list"></div>
+
 </body>
 </html>
